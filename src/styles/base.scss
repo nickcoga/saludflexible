@@ -1,4 +1,5 @@
-@import "./variables";
+@use "./fonts";
+@use "./variables" as *;
 
 * {
   box-sizing: border-box;
@@ -7,7 +8,7 @@
 }
 
 body {
-  font-family: var(--font-main);
+  font-family: "BR Sonoma", sans-serif;
   background-color: #fff;
   color: var(--color-secondary);
   line-height: 1.5;
