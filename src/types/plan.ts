@@ -5,7 +5,6 @@ export interface Plan {
   age: number;
 }
 
-
 export interface SelectedPlan extends Plan {
   discounted: boolean;
 }

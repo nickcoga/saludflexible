@@ -1,33 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { fetchPlans } from '../../services/api';
-import type { Plan } from '../../types/plan';
-import { useUser } from '../../contexts/UserContext';
-import { getAgeFromBirthdate } from '../../utils/getAge';
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { fetchPlans } from "../../services/api";
+import type { Plan } from "../../types/plan";
+import { useUser } from "../../contexts/UserContext";
+import { getAgeFromBirthdate } from "../../utils/getAge";
 
 const PlansPage = () => {
   const { user } = useUser();
   const navigate = useNavigate();
 
   const [plans, setPlans] = useState<Plan[]>([]);
-  const [target, setTarget] = useState<'me' | 'someone-else'>('me');
+  const [target, setTarget] = useState<"me" | "someone-else">("me");
   const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
-
 
   useEffect(() => {
     if (!user) {
-      navigate('/');
+      navigate("/");
       return;
     }
 
     const getPlans = async () => {
       try {
         const data = await fetchPlans();
-        const userAge = getAgeFromBirthdate(user?.birthDay)
+        const userAge = getAgeFromBirthdate(user?.birthDay);
         const filtered = data.filter((plan: Plan) => userAge <= plan.age);
         setPlans(filtered);
       } catch (error) {
-        console.error('Error al cargar planes:', error);
+        console.error("Error al cargar planes:", error);
       }
     };
 
@@ -39,7 +38,7 @@ const PlansPage = () => {
   };
 
   const getPrice = (plan: Plan): number => {
-    return target === 'someone-else'
+    return target === "someone-else"
       ? Math.round(plan.price * 0.95)
       : plan.price;
   };
@@ -49,11 +48,11 @@ const PlansPage = () => {
 
     const planConEstado = {
       ...selectedPlan,
-      discounted: target === 'someone-else',
+      discounted: target === "someone-else",
     };
 
-    localStorage.setItem('selectedPlan', JSON.stringify(planConEstado));
-    navigate('/summary');
+    localStorage.setItem("selectedPlan", JSON.stringify(planConEstado));
+    navigate("/summary");
   };
 
   return (
@@ -62,14 +61,14 @@ const PlansPage = () => {
 
       <div className="plans__toggle">
         <button
-          className={`plans__toggle-button ${target === 'me' ? 'plans__toggle-button--active' : ''}`}
-          onClick={() => setTarget('me')}
+          className={`plans__toggle-button ${target === "me" ? "plans__toggle-button--active" : ""}`}
+          onClick={() => setTarget("me")}
         >
           Para mí
         </button>
         <button
-          className={`plans__toggle-button ${target === 'someone-else' ? 'plans__toggle-button--active' : ''}`}
-          onClick={() => setTarget('someone-else')}
+          className={`plans__toggle-button ${target === "someone-else" ? "plans__toggle-button--active" : ""}`}
+          onClick={() => setTarget("someone-else")}
         >
           Para alguien más
         </button>
@@ -79,7 +78,7 @@ const PlansPage = () => {
         {plans.map((plan: Plan) => (
           <div
             key={plan.name}
-            className={`plans__card ${selectedPlan?.name === plan.name ? 'plans__card--selected' : ''}`}
+            className={`plans__card ${selectedPlan?.name === plan.name ? "plans__card--selected" : ""}`}
             onClick={() => handleSelectPlan(plan)}
           >
             <h3 className="plans__card-title">{plan.name}</h3>

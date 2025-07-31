@@ -1,10 +1,8 @@
 // App.tsx
-import { Routes, Route } from 'react-router-dom';
-import Plans from './pages/Plans';
-import Summary from './pages/Summary/Summary';
-import FormPage from './components/Form';
-
-
+import { Routes, Route } from "react-router-dom";
+import Plans from "./pages/Plans";
+import Summary from "./pages/Summary/Summary";
+import FormPage from "./components/Form";
 
 function App() {
   return (

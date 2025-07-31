@@ -5,7 +5,8 @@ export const getAgeFromBirthdate = (birthDateString: string): number => {
   let age = today.getFullYear() - birthDate.getFullYear();
   const hasHadBirthdayThisYear =
     today.getMonth() > birthDate.getMonth() ||
-    (today.getMonth() === birthDate.getMonth() && today.getDate() >= birthDate.getDate());
+    (today.getMonth() === birthDate.getMonth() &&
+      today.getDate() >= birthDate.getDate());
 
   if (!hasHadBirthdayThisYear) {
     age--;
