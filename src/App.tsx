@@ -1,6 +1,6 @@
 // App.tsx
 import { Routes, Route } from 'react-router-dom';
-import Plans from './pages/Plans/Plans';
+import Plans from './pages/Plans';
 import Summary from './pages/Summary/Summary';
 import FormPage from './components/Form';
 
