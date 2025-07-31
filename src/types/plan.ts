@@ -1,5 +1,11 @@
 export interface Plan {
   name: string;
+  price: number;
+  description: string[];
   age: number;
-  description: string;
+}
+
+
+export interface SelectedPlan extends Plan {
+  discounted: boolean;
 }
