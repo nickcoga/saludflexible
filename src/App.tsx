@@ -1,17 +1,19 @@
-// App.tsx
-import { Routes, Route } from "react-router-dom";
-import Plans from "./pages/Plans";
-import Summary from "./pages/Summary/Summary";
+import { Route, Routes } from "react-router-dom";
+import Layout from "./layout/Layout";
 import FormPage from "./components/Form";
+import PlansPage from "./pages/Plans";
+import SummaryPage from "./pages/Summary";
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<FormPage />} />
-      <Route path="/plans" element={<Plans />} />
-      <Route path="/summary" element={<Summary />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path="/" element={<FormPage />} />
+        <Route path="/plans" element={<PlansPage />} />
+        <Route path="/summary" element={<SummaryPage />} />
+      </Routes>
+    </Layout>
   );
-}
+};
 
 export default App;
