@@ -1,7 +1,7 @@
 import styles from "./Summary.module.scss";
 
-const Summary = () => {
+const SummaryPage = () => {
   return <div className={styles.container}>Summary Page</div>;
 };
 
-export default Summary;
+export default SummaryPage;
