@@ -23,10 +23,16 @@ const Header = () => {
     >
       {isMobile ? <IconLogoRimac /> : <IconLogoRimac width={73} height={36} />}
       <div className={styles.header__phone}>
-        {isMobile ? null : <span>¡Compra por este medio!</span>}
-        <IconTelephone title="Llamanos al (01) 411 6001" />
-        <a href="tel:014116001" aria-label="Llamar al número (01) 411 6001">
-          (01) 411 6001
+        {isMobile ? null : (
+          <span className={styles.phoneText}>¡Compra por este medio!</span>
+        )}
+        <a
+          href="tel:014116001"
+          aria-label="Llamar al número (01) 411 6001"
+          className={styles.phoneLink}
+        >
+          <IconTelephone title="Llamanos al (01) 411 6001" />
+          <span> (01) 411 6001</span>
         </a>
       </div>
     </header>
