@@ -1,8 +1,12 @@
 // src/components/Form/UserForm.tsx
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // si usas React Router
+import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../services/api";
 import type { User } from "../../types/user";
+import styles from "./Form.module.scss";
+import InputTextSelect from "../InputTextSelect/InputTextSelect";
+import typeDocs from "../../constants/typeDocs";
+import InputText from "../InputText/InputText";
 
 interface Props {
   onUserLoaded: (user: User) => void;
@@ -13,18 +17,20 @@ const UserForm = ({ onUserLoaded }: Props) => {
   const [documentType, setDocumentType] = useState("DNI");
   const [documentNumber, setDocumentNumber] = useState("");
   const [phone, setPhone] = useState("");
+  const [acceptPrivacy, setAcceptPrivacy] = useState(false);
+  const [acceptMarketing, setAcceptMarketing] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!documentNumber || !phone) {
-      setError("Todos los campos son obligatorios.");
+    if (!documentNumber || !phone || !acceptPrivacy) {
+      setError("Todos los campos obligatorios deben completarse.");
       return;
     }
 
     try {
-      const user = await fetchUser(); // Aquí podrías pasarle documentNumber si lo requiere
+      const user = await fetchUser();
       onUserLoaded(user);
       navigate("/plans");
     } catch (err) {
@@ -33,50 +39,56 @@ const UserForm = ({ onUserLoaded }: Props) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Creado para ti y tu familia</h2>
-      <p>
+    <form onSubmit={handleSubmit} className={styles.userForm}>
+      <p className={styles.userForm__text}>
         Tú eliges cuánto pagar, ingresa tus datos, cotiza y recibe nuestra
         asesoría. 100% online.
       </p>
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
-      <label>
-        Tipo de documento
-        <select
-          value={documentType}
-          onChange={(e) => setDocumentType(e.target.value)}
-        >
-          <option value="DNI">DNI</option>
-          <option value="CE">Carnet de extranjería</option>
-        </select>
-      </label>
+      <InputTextSelect
+        required
+        type="number"
+        options={typeDocs}
+        placeholderInput="Nro. de Documento"
+        placeholderSelect="Tipo de documento"
+        valueInput={documentNumber}
+        valueSelect={documentType}
+        nameInput="documentNumber"
+        nameSelect="documentType"
+        onChangeInput={(e) => setDocumentNumber(e.target.value)}
+        onChangeSelect={(e) => setDocumentType(e.target.value)}
+        showDefaultOption
+      />
 
-      <label>
-        Nro de documento
+      <InputText
+        required
+        type="number"
+        label=""
+        placeholder="Celular"
+        name="phone"
+        value={phone}
+        onChange={(e) => setPhone(e.target.value)}
+      />
+
+      <label className={styles.userForm__checkbox}>
         <input
-          type="text"
-          value={documentNumber}
-          onChange={(e) => setDocumentNumber(e.target.value)}
+          type="checkbox"
+          checked={acceptPrivacy}
+          onChange={(e) => setAcceptPrivacy(e.target.checked)}
+          required
         />
+        Acepto la Política de Privacidad
       </label>
 
-      <label>
-        Celular
+      <label className={styles.userForm__checkbox}>
         <input
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+          type="checkbox"
+          checked={acceptMarketing}
+          onChange={(e) => setAcceptMarketing(e.target.checked)}
         />
-      </label>
-
-      <label>
-        <input type="checkbox" required /> Acepto la Política de Privacidad
-      </label>
-
-      <label>
-        <input type="checkbox" /> Acepto las comunicaciones comerciales
+        Acepto las comunicaciones comerciales
       </label>
 
       <button type="submit">Cotiza aquí</button>
