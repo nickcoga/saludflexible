@@ -38,7 +38,9 @@ const FormPage = () => {
           {isMobile ? <img src={maskGroupMobile} alt="Mask Group" /> : null}
         </div>
         <hr className={styles.container__line} />
-        <UserForm onUserLoaded={setUser} />
+        <div className={styles.container__contentForm}>
+          <UserForm onUserLoaded={setUser} />
+        </div>
       </div>
     </div>
   );

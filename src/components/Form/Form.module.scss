@@ -44,10 +44,15 @@
   &__line {
     border: 1px solid #ccd1ee;
   }
+
+  &__contentForm {
+    display: flex;
+  }
 }
 
 .userForm {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   gap: 24px;
 
@@ -68,6 +73,10 @@
     padding: 0px;
     &__contentTop {
       display: flex;
+    }
+    &__contentForm {
+      padding: 32px 216px 80px 128px;
+      gap: 24px;
     }
   }
 }
