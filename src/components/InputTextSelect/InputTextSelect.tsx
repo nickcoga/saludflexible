@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./InputTextSelect.module.scss";
 import IconArrowDown from "../../icons/arrowDown";
 
@@ -34,8 +34,42 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
   options = [],
   onChangeInput,
   onChangeSelect,
-  type = "text",
 }) => {
+  const getMaxLength = () => {
+    return valueSelect === "DNI" ? 8 : 12;
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.target.value;
+
+    // Elimina cualquier carácter que no sea número
+    const numericValue = input.replace(/\D/g, "");
+
+    // Aplica el límite según el tipo de documento
+    const maxLength = getMaxLength();
+    const trimmedValue = numericValue.slice(0, maxLength);
+
+    // Crea un nuevo evento simulado con el valor limpio
+    const newEvent = {
+      ...e,
+      target: {
+        ...e.target,
+        value: trimmedValue,
+      },
+    };
+
+    onChangeInput(newEvent as React.ChangeEvent<HTMLInputElement>);
+  };
+
+  useEffect(() => {
+    if (valueInput.length > getMaxLength()) {
+      const trimmed = valueInput.slice(0, getMaxLength());
+      onChangeInput({
+        target: { value: trimmed, name: nameInput },
+      } as React.ChangeEvent<HTMLInputElement>);
+    }
+  }, [valueSelect]);
+
   return (
     <div className={styles.container}>
       <div className={styles.selectWrapper}>
@@ -67,10 +101,13 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
         <label className={styles.label}>{placeholderInput}</label>
         <input
           className={styles.input}
-          type={type}
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          maxLength={getMaxLength()}
           value={valueInput}
           name={nameInput}
-          onChange={onChangeInput}
+          onChange={handleChange}
           required={required}
         />
       </div>

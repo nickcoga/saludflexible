@@ -49,7 +49,6 @@ const UserForm = ({ onUserLoaded }: Props) => {
 
       <InputTextSelect
         required
-        type="number"
         options={typeDocs}
         placeholderInput="Nro. de Documento"
         placeholderSelect="Tipo de documento"
