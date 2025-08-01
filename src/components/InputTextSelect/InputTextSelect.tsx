@@ -97,8 +97,8 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
         </select>
       </div>
 
-      <div className={styles.inputWrapper}>
-        <label className={styles.label}>{placeholderInput}</label>
+      <label className={styles.label}>
+        {placeholderInput}
         <input
           className={styles.input}
           type="text"
@@ -110,7 +110,7 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
           onChange={handleChange}
           required={required}
         />
-      </div>
+      </label>
     </div>
   );
 };
