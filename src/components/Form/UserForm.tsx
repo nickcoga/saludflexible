@@ -64,8 +64,8 @@ const UserForm = ({ onUserLoaded }: Props) => {
       <InputText
         required
         type="number"
-        label=""
-        placeholder="Celular"
+        label="Celular"
+        placeholder=" "
         name="phone"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
@@ -86,6 +86,7 @@ const UserForm = ({ onUserLoaded }: Props) => {
           type="checkbox"
           checked={acceptMarketing}
           onChange={(e) => setAcceptMarketing(e.target.checked)}
+          required
         />
         Acepto las comunicaciones comerciales
       </label>
