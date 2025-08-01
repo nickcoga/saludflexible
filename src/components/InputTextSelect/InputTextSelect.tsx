@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./InputTextSelect.module.scss";
+import IconArrowDown from "../../icons/arrowDown";
 
 interface Option {
   value: string;
@@ -37,12 +38,17 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
 }) => {
   return (
     <div className={styles.container}>
-      <div className={styles.container__contentSelect}>
+      <div className={styles.selectWrapper}>
+        <div className={styles.selectFake}>
+          <span className={styles.selectText}>{valueSelect}</span>
+          <IconArrowDown />
+        </div>
         <select
-          className={styles.container__styledSelect}
+          className={styles.hiddenSelect}
           value={valueSelect}
           name={nameSelect}
           onChange={onChangeSelect}
+          required={required}
         >
           {showDefaultOption && (
             <option disabled value="">
@@ -57,15 +63,15 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
         </select>
       </div>
 
-      <div className={styles.container__contentInputText}>
+      <div className={styles.inputWrapper}>
+        <label className={styles.label}>{placeholderInput}</label>
         <input
-          className={styles.container__contentInputText__styledInputText}
+          className={styles.input}
           type={type}
           value={valueInput}
           name={nameInput}
           onChange={onChangeInput}
           required={required}
-          placeholder={placeholderInput}
         />
       </div>
     </div>

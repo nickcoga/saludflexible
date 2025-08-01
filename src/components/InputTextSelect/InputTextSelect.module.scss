@@ -2,59 +2,96 @@
 
 .container {
   display: flex;
-  width: 80vw;
-  gap: 5px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%;
+  max-width: 420px;
+  border: 1px solid #5e6488;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9ff;
+}
 
-  @media only screen and (min-width: 768px) {
-    width: 15vw;
-  }
+.selectWrapper {
+  position: relative;
+  flex: 1;
+}
 
-  &__contentSelect {
-    flex: 1;
-  }
+.selectFake {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 56px;
+  padding: 16px;
+  font-size: 16px;
+  color: var(--dark-gray);
+  background-color: white;
+  font-family: inherit;
+  cursor: pointer;
+}
 
-  &__styledSelect {
-    width: 100%;
-    height: 56px;
-    font-size: 16px;
-    line-height: 24px;
-    border: none;
-    background-color: White;
-    padding: 0 11px 0 16px;
+.selectText {
+  flex: 1;
+  font-family: "BR Sonoma", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.hiddenSelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.inputWrapper {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 6px 10px;
+  justify-content: center;
+  background-color: var(--white);
+}
+
+.label {
+  color: var(--step-color);
+  margin-bottom: 2px;
+  font-family: "BR Sonoma", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.input {
+  font-size: 16px;
+  border: none;
+  background-color: transparent;
+  color: var(--dark-gray);
+  height: 24px;
+  font-family: "BR Sonoma", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+
+  &:focus {
     outline: none;
   }
 
-  &__contentInputText {
-    flex: 2;
+  &::placeholder {
+    color: var(--light-gray);
+  }
 
-    &__styledInputText {
-      width: 100%;
-      height: 56px;
-      font-size: 16px;
-      line-height: 24px;
-      border: none;
+  &[type="number"]::-webkit-inner-spin-button,
+  &[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
 
-      &:focus {
-        color: var(--DarkGray);
-        outline: none;
-      }
-
-      &::placeholder {
-        color: LightGray;
-      }
-
-      // Oculta flechas en input[type=number]
-      &[type="number"]::-webkit-inner-spin-button,
-      &[type="number"]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
-
-      &[type="number"] {
-        -moz-appearance: textfield;
-      }
-    }
+  &[type="number"] {
+    -moz-appearance: textfield;
   }
 }
