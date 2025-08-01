@@ -39,6 +39,10 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
     return valueSelect === "DNI" ? 8 : 12;
   };
 
+  const getPattern = () => {
+    return valueSelect === "DNI" ? "\\d{8}" : "\\d{12}";
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value;
 
@@ -103,7 +107,12 @@ const InputTextSelect: React.FC<InputTextSelectProps> = ({
           className={styles.input}
           type="text"
           inputMode="numeric"
-          pattern="[0-9]*"
+          pattern={getPattern()}
+          title={
+            valueSelect === "DNI"
+              ? "Ingrese un número válido de 8 dígitos"
+              : "Ingrese un número válido de 12 dígitos"
+          }
           maxLength={getMaxLength()}
           value={valueInput}
           name={nameInput}
