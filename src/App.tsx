@@ -3,6 +3,7 @@ import Layout from "./layout/Layout";
 import FormPage from "./components/Form";
 import PlansPage from "./pages/Plans";
 import SummaryPage from "./pages/Summary";
+import "./styles/base.css";
 
 const App = () => {
   return (
