@@ -1,9 +1,12 @@
 :root {
   --white: #ffffff;
+  --grey-100: #03050f;
   --dark-gray: #333333;
   --grey-60: #5e6488;
   --light-gray: #999999;
   --primary-color: #0066ff;
+  --red: #e60023;
+  --red-dark: #b8001c;
   --border-radius: 4px;
   --font-size-base: 16px;
   --input-height: 56px;
