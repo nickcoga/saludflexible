@@ -7,6 +7,7 @@ import styles from "./Form.module.scss";
 import InputTextSelect from "../InputTextSelect/InputTextSelect";
 import typeDocs from "../../constants/typeDocs";
 import InputText from "../InputText/InputText";
+import Checkbox from "../InputChecked/Checkbox";
 
 interface Props {
   onUserLoaded: (user: User) => void;
@@ -71,25 +72,31 @@ const UserForm = ({ onUserLoaded }: Props) => {
         onChange={(e) => setPhone(e.target.value)}
       />
 
-      <label className={styles.userForm__checkbox}>
-        <input
-          type="checkbox"
-          checked={acceptPrivacy}
-          onChange={(e) => setAcceptPrivacy(e.target.checked)}
-          required
-        />
+      <Checkbox
+        id="acceptPrivacy"
+        checked={acceptPrivacy}
+        onChange={(e) => setAcceptPrivacy(e.target.checked)}
+        required
+      >
         Acepto la Política de Privacidad
-      </label>
+      </Checkbox>
 
-      <label className={styles.userForm__checkbox}>
-        <input
-          type="checkbox"
-          checked={acceptMarketing}
-          onChange={(e) => setAcceptMarketing(e.target.checked)}
-          required
-        />
-        Acepto las comunicaciones comerciales
-      </label>
+      <Checkbox
+        id="acceptMarketing"
+        checked={acceptMarketing}
+        onChange={(e) => setAcceptMarketing(e.target.checked)}
+        required
+      >
+        Acepto la Política Comunicaciones Comerciales
+      </Checkbox>
+
+      <a
+        href="https://www.rimac.com/politica-privacidad?rfid=publica:legales-politica-privacidad:footer:link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Aplican Términos y Condiciones.
+      </a>
 
       <button type="submit">Cotiza aquí</button>
     </form>
