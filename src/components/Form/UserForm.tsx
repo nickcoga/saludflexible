@@ -1,4 +1,3 @@
-// src/components/Form/UserForm.tsx
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchUser } from "../../services/api";
@@ -8,6 +7,7 @@ import InputTextSelect from "../InputTextSelect/InputTextSelect";
 import typeDocs from "../../constants/typeDocs";
 import InputText from "../InputText/InputText";
 import Checkbox from "../InputChecked/Checkbox";
+import Button from "../Button/Button";
 
 interface Props {
   onUserLoaded: (user: User) => void;
@@ -94,11 +94,14 @@ const UserForm = ({ onUserLoaded }: Props) => {
         href="https://www.rimac.com/politica-privacidad?rfid=publica:legales-politica-privacidad:footer:link"
         target="_blank"
         rel="noopener noreferrer"
+        className={styles.userForm__link}
       >
         Aplican Términos y Condiciones.
       </a>
 
-      <button type="submit">Cotiza aquí</button>
+      <Button type="submit" variant="tertiary">
+        Continuar
+      </Button>
     </form>
   );
 };
