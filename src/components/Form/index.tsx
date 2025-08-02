@@ -24,7 +24,11 @@ const FormPage = () => {
 
   return (
     <div className={styles.container} style={backgroundStyle}>
-      {isMobile ? null : <img src={maskGroupDesktop} alt="Mask Group" />}
+      {isMobile ? null : (
+        <div className={styles.container__contentMask}>
+          <img src={maskGroupDesktop} alt="Mask Group" />
+        </div>
+      )}
       <div className={styles.container__content}>
         <div className={styles.container__contentTop}>
           <div className={styles.container__contentTop__div}>
