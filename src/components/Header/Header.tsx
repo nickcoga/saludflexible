@@ -19,21 +19,27 @@ const Header = () => {
 
   return (
     <header
-      className={`${styles.header} ${scrolled ? styles["header--scrolled"] : ""}`}
+      className={`${styles.header} ${scrolled ? styles["header--scrolled"] : ""} `}
     >
-      {isMobile ? <IconLogoRimac /> : <IconLogoRimac width={73} height={36} />}
-      <div className={styles.header__phone}>
-        {isMobile ? null : (
-          <span className={styles.phoneText}>¡Compra por este medio!</span>
+      <div className={`${styles.header__content} container`}>
+        {isMobile ? (
+          <IconLogoRimac />
+        ) : (
+          <IconLogoRimac width={73} height={36} />
         )}
-        <a
-          href="tel:014116001"
-          aria-label="Llamar al número (01) 411 6001"
-          className={styles.phoneLink}
-        >
-          <IconTelephone title="Llamanos al (01) 411 6001" />
-          <span> (01) 411 6001</span>
-        </a>
+        <div className={`${styles.header__phone}`}>
+          {isMobile ? null : (
+            <span className={styles.phoneText}>¡Compra por este medio!</span>
+          )}
+          <a
+            href="tel:014116001"
+            aria-label="Llamar al número (01) 411 6001"
+            className={styles.phoneLink}
+          >
+            <IconTelephone title="Llamanos al (01) 411 6001" />
+            <span> (01) 411 6001</span>
+          </a>
+        </div>
       </div>
     </header>
   );

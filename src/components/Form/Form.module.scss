@@ -1,10 +1,18 @@
 .container {
+  width: 100%;
+  grid-column: 1 / 4;
+  grid-row: 4/8;
   min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 0px 24px 64px 24px;
   gap: 24px;
+  &__contentMask {
+    padding-top: 32px;
+    padding-bottom: 48px;
+    padding-left: 120px;
+  }
   &__content {
     display: flex;
     flex-direction: column;
@@ -75,7 +83,9 @@
 
 @media screen and (width > 768px) {
   .container {
-    min-height: 0;
+    grid-column: 1/12;
+    grid-row: 1/4;
+    min-height: 100vh;
     display: flex;
     flex-direction: row;
     padding: 0px;
