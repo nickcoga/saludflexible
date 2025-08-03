@@ -21,7 +21,7 @@ const Header = () => {
     <header
       className={`${styles.header} ${scrolled ? styles["header--scrolled"] : ""} `}
     >
-      <div className={`${styles.header__content} container`}>
+      <div className={`${styles.header__content} containerMain`}>
         {isMobile ? (
           <IconLogoRimac />
         ) : (

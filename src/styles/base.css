@@ -22,18 +22,3 @@ button {
   font-family: inherit;
   cursor: pointer;
 }
-
-main {
-  background: var(--neutral-0);
-  margin: auto;
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: auto;
-  justify-content: center;
-  align-items: center;
-
-  @media screen and (width >=1024px) {
-    grid-template-columns: repeat(11, 1fr);
-  }
-}
