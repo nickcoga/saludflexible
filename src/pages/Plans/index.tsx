@@ -8,18 +8,22 @@ import styles from "./Plans.module.scss";
 import IconProtection from "../../icons/protection";
 import IconAddUser from "../../icons/addUser";
 import Button from "../../components/Button/Button";
+import { useMediaQuery } from "@mui/material";
 
 const PlansPage = () => {
   const { user } = useUser();
   const navigate = useNavigate();
   const [plans, setPlans] = useState<Plan[]>([]);
-  const [target, setTarget] = useState<"me" | "someone-else">("me");
+  const [target, setTarget] = useState<"me" | "someone-else" | null>(null);
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   useEffect(() => {
     if (!user) {
       navigate("/");
       return;
     }
+
+    if (!target) return;
 
     const getPlans = async () => {
       try {
@@ -33,7 +37,7 @@ const PlansPage = () => {
     };
 
     getPlans();
-  }, [user, navigate]);
+  }, [user, target, navigate]);
 
   const getPrice = (plan: Plan): number => {
     return target === "someone-else"
@@ -66,7 +70,11 @@ const PlansPage = () => {
         <div className={styles.plans__content}>
           <div className={styles.plans__content__top}>
             <div className={styles.plans__content__box}>
-              <IconProtection />
+              {isMobile ? (
+                <IconProtection />
+              ) : (
+                <IconProtection width={48} height={48} />
+              )}
               <div>Para mí</div>
             </div>
             <input
@@ -84,7 +92,11 @@ const PlansPage = () => {
         <div className={styles.plans__content}>
           <div className={styles.plans__content__top}>
             <div className={styles.plans__content__box}>
-              <IconAddUser />
+              {isMobile ? (
+                <IconAddUser />
+              ) : (
+                <IconAddUser width={48} height={48} />
+              )}
               <div>Para alguien más</div>
             </div>
             <input
@@ -100,7 +112,7 @@ const PlansPage = () => {
         </div>
       </div>
 
-      {plans.length > 0 && (
+      {target && plans.length > 0 && (
         <div className={styles.plans__list}>
           {plans.map((plan: Plan) => (
             <div key={plan.name} className={styles.plans__card}>
