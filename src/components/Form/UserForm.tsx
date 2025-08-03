@@ -104,7 +104,7 @@ const UserForm = ({ onUserLoaded }: Props) => {
       </a>
 
       <Button type="submit" variant="tertiary">
-        Continuar
+        Cotiza aquí
       </Button>
     </form>
   );
