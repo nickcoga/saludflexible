@@ -1,0 +1,36 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #03050f;
+  gap: 24px;
+  padding: 32px 24px;
+
+  &__line {
+    width: 336px;
+    border: 1px solid #2b304e;
+  }
+  &__text {
+    font-family: "BR Sonoma", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 20px;
+    color: #ffffff;
+  }
+}
+
+@media screen and (width > 768px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 32px 120px;
+    &__text {
+      font-family: "BR Sonoma", sans-serif;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 16px;
+      color: #ffffff;
+    }
+  }
+}
