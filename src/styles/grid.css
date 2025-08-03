@@ -1,12 +1,11 @@
 .containerMain {
   width: 100%;
   max-width: 1360px;
-  padding-left: 16px;
-  padding-right: 16px;
   margin: 0 auto;
   box-sizing: border-box;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 16px;
   grid-template-rows: auto;
   justify-content: center;
   align-items: center;
@@ -16,6 +15,7 @@
   .containerMain {
     padding: 0px;
     grid-template-columns: repeat(8, minmax(0, 1fr));
+    gap: 24px;
   }
 }
 
@@ -23,5 +23,6 @@
   .containerMain {
     padding: 0px;
     grid-template-columns: repeat(11, minmax(0, 1fr));
+    gap: 24px;
   }
 }
