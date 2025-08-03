@@ -42,8 +42,12 @@
     background-color: #ffffff;
     &__top {
       display: flex;
-      gap: 8px;
       align-items: center;
+    }
+    &__box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
   }
 
@@ -53,33 +57,10 @@
     gap: 24px;
   }
 
-  &__toggle_button {
-    border: none;
-    cursor: pointer;
-    font-family: "Lato", sans-serif;
-    font-weight: 900;
-    font-style: Black;
-    font-size: 20px;
-    line-height: 28px;
-    letter-spacing: -0.2px;
-    background-color: #ffffff;
-
-    &__text {
-      font-family: "Lato", sans-serif;
-      font-weight: 400;
-      font-size: 12px;
-      line-height: 20px;
-      letter-spacing: 0.2px;
-    }
-
-    &--active {
-      color: #141938;
-    }
-  }
-
   &__list {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
   }
@@ -89,7 +70,6 @@
     flex-direction: column;
     border: 1px solid #ddd;
     padding: 1.5rem;
-    border-radius: 6px;
     cursor: pointer;
     background-color: #fff;
     padding-top: 40px;
@@ -118,9 +98,40 @@
 
     &_benefits {
       display: flex;
+      min-height: 313px;
       flex-direction: column;
       gap: 24px;
       padding-left: 1.2rem;
+    }
+  }
+
+  &__toggle_checkbox {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ccd1d9;
+    border-radius: 50%;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    margin-left: auto;
+    transition: all 0.2s ease;
+
+    &:checked {
+      background-color: #389e0d;
+      border-color: #389e0d;
+    }
+
+    &:checked::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 2px;
+      width: 6px;
+      height: 12px;
+      border: solid #ffffff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
     }
   }
 }
@@ -136,6 +147,10 @@
       gap: 32px;
       flex-direction: row;
       justify-content: center;
+    }
+
+    &__card {
+      max-width: 288px;
     }
 
     &__list {

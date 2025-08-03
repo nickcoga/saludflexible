@@ -65,29 +65,38 @@ const PlansPage = () => {
       <div className={styles.plans__toggle}>
         <div className={styles.plans__content}>
           <div className={styles.plans__content__top}>
-            <IconProtection />
-            <button
-              className={`${styles.plans__toggle_button} ${target === "me" ? styles["plans__toggle_button--active"] : ""}`}
-              onClick={() => setTarget("me")}
-            >
-              Para mí
-            </button>
+            <div className={styles.plans__content__box}>
+              <IconProtection />
+              <div>Para mí</div>
+            </div>
+            <input
+              type="checkbox"
+              checked={target === "me"}
+              onChange={() => setTarget("me")}
+              className={styles.plans__toggle_checkbox}
+            />
           </div>
           <p className={styles.plans__toggle__text}>
             Cotiza tu seguro de salud y agrega familiares si así lo deseas.
           </p>
         </div>
+
         <div className={styles.plans__content}>
           <div className={styles.plans__content__top}>
-            <IconAddUser />
-            <button
-              className={`${styles.plans__toggle_button} ${target === "someone-else" ? styles["plans__toggle_button--active"] : ""}`}
-              onClick={() => setTarget("someone-else")}
-            >
-              Para alguien más
-            </button>
+            <div className={styles.plans__content__box}>
+              <IconAddUser />
+              <div>Para alguien más</div>
+            </div>
+            <input
+              type="checkbox"
+              checked={target === "someone-else"}
+              onChange={() => setTarget("someone-else")}
+              className={styles.plans__toggle_checkbox}
+            />
           </div>
-          <p>Cotiza tu seguro de salud y agrega familiares si así lo deseas.</p>
+          <p className={styles.plans__toggle__text}>
+            Cotiza tu seguro de salud y agrega familiares si así lo deseas.
+          </p>
         </div>
       </div>
 
