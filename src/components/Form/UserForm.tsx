@@ -8,6 +8,7 @@ import typeDocs from "../../constants/typeDocs";
 import InputText from "../InputText/InputText";
 import Checkbox from "../InputChecked/Checkbox";
 import Button from "../Button/Button";
+import { useMediaQuery } from "@mui/material";
 
 interface Props {
   onUserLoaded: (user: User) => void;
@@ -21,6 +22,7 @@ const UserForm = ({ onUserLoaded }: Props) => {
   const [acceptPrivacy, setAcceptPrivacy] = useState(false);
   const [acceptMarketing, setAcceptMarketing] = useState(false);
   const [error, setError] = useState("");
+  const isMobile = useMediaQuery("(max-width:768px)");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,10 +43,12 @@ const UserForm = ({ onUserLoaded }: Props) => {
 
   return (
     <form onSubmit={handleSubmit} className={styles.userForm}>
-      <p className={styles.userForm__text}>
-        Tú eliges cuánto pagar, ingresa tus datos, cotiza y recibe nuestra
-        asesoría. 100% online.
-      </p>
+      {isMobile ? (
+        <p className={styles.userForm__subTitle}>
+          Tú eliges cuánto pagar, ingresa tus datos, cotiza y recibe nuestra
+          asesoría. 100% online.
+        </p>
+      ) : null}
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 

@@ -30,20 +30,30 @@ const FormPage = () => {
         </div>
       )}
       <div className={styles.container__content}>
-        <div className={styles.container__contentTop}>
-          <div className={styles.container__contentTop__div}>
-            <div className={styles.container__contentTop__span}>
-              Seguro Salud Flexible
+        <div className={styles.container__content__section}>
+          <div className={styles.container__contentTop}>
+            <div className={styles.container__contentTop__div}>
+              <span className={styles.container__contentTop__span}>
+                Seguro Salud Flexible
+              </span>
+              <div className={styles.container__contentTop__text}>
+                <h1 className={styles.container__contentTop__title}>
+                  Creado para ti y tu familia
+                </h1>
+                {isMobile ? null : (
+                  <p className={styles.container__contentTop__subTitle}>
+                    Tú eliges cuánto pagar, ingresa tus datos, cotiza y recibe
+                    nuestra asesoría. 100% online.
+                  </p>
+                )}
+              </div>
             </div>
-            <h1 className={styles.container__contentTop__h1}>
-              Creado para ti y tu familia
-            </h1>
+            {isMobile ? <img src={maskGroupMobile} alt="Mask Group" /> : null}
           </div>
-          {isMobile ? <img src={maskGroupMobile} alt="Mask Group" /> : null}
-        </div>
-        <hr className={styles.container__line} />
-        <div className={styles.container__contentForm}>
-          <UserForm onUserLoaded={setUser} />
+          {isMobile ? <hr className={styles.container__line} /> : null}
+          <div className={styles.container__contentForm}>
+            <UserForm onUserLoaded={setUser} />
+          </div>
         </div>
       </div>
     </div>
