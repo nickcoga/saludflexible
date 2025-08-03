@@ -93,7 +93,6 @@
     &_price {
       margin-bottom: 0.5rem;
       font-size: 1.2rem;
-      color: #d32f2f;
     }
 
     &_benefits {
@@ -102,6 +101,52 @@
       flex-direction: column;
       gap: 24px;
       padding-left: 1.2rem;
+    }
+  }
+
+  &__card_price {
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: Black;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &_symbol {
+      font-weight: 700;
+      color: #141938;
+    }
+
+    &_month {
+      font-family: "Lato", sans-serif;
+      font-weight: 900;
+      font-style: Black;
+      font-size: 20px;
+      line-height: 28px;
+      letter-spacing: -0.2px;
+      color: #141938;
+    }
+
+    &_old {
+      color: #7981b2;
+      text-decoration: line-through;
+      font-size: 14px;
+    }
+
+    &_discounted {
+      color: #141938;
+      font-weight: 700;
+    }
+    &_label {
+      font-size: 12px;
+      line-height: 16px;
+      font-weight: 900;
+      letter-spacing: 0.6px;
+      color: #7981b2;
+      text-transform: uppercase;
     }
   }
 

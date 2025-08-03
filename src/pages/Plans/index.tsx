@@ -105,7 +105,33 @@ const PlansPage = () => {
           {plans.map((plan: Plan) => (
             <div key={plan.name} className={styles.plans__card}>
               <h3 className={styles.plans__card_title}>{plan.name}</h3>
-              <p className={styles.plans__card_price}>S/ {getPrice(plan)}</p>
+              <div className={styles.plans__card_price}>
+                <span className={styles.plans__card_price_label}>
+                  COSTO DEL PLAN
+                </span>
+                {target === "someone-else" ? (
+                  <>
+                    <p className={styles.plans__card_price_old}>
+                      $ {plan.price} antes
+                    </p>
+                    <p className={styles.plans__card_price_discounted}>
+                      $ {getPrice(plan)}{" "}
+                      <span className={styles.plans__card_price_month}>
+                        al mes
+                      </span>
+                    </p>
+                  </>
+                ) : (
+                  <p>
+                    <span className={styles.plans__card_price_symbol}>$</span>{" "}
+                    {plan.price}{" "}
+                    <span className={styles.plans__card_price_month}>
+                      al mes
+                    </span>
+                  </p>
+                )}
+              </div>
+
               <ul className={styles.plans__card_benefits}>
                 {plan.description.map((d: string, idx: number) => (
                   <li key={idx}>{d}</li>
