@@ -102,6 +102,12 @@
       gap: 24px;
       padding-left: 1.2rem;
     }
+
+    &__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__card_price {

@@ -7,6 +7,8 @@ import { getAgeFromBirthdate } from "../../utils/getAge";
 import styles from "./Plans.module.scss";
 import IconProtection from "../../icons/protection";
 import IconAddUser from "../../icons/addUser";
+import IconHomeLight from "../../icons/homeLight";
+import IconHospitalLight from "../../icons/hospitalLight";
 import Button from "../../components/Button/Button";
 import { useMediaQuery } from "@mui/material";
 
@@ -41,7 +43,7 @@ const PlansPage = () => {
 
   const getPrice = (plan: Plan): number => {
     return target === "someone-else"
-      ? Math.round(plan.price * 0.95)
+      ? Math.round(plan.price * 0.95 * 100) / 100
       : plan.price;
   };
 
@@ -53,6 +55,15 @@ const PlansPage = () => {
 
     localStorage.setItem("selectedPlan", JSON.stringify(planConEstado));
     navigate("/summary");
+  };
+
+  const getPlanIcon = (planName: string) => {
+    if (planName.toLowerCase().includes("clínica")) {
+      return <IconHospitalLight />;
+    } else if (planName.toLowerCase().includes("casa")) {
+      return <IconHomeLight />;
+    }
+    return null;
   };
 
   return (
@@ -116,7 +127,11 @@ const PlansPage = () => {
         <div className={styles.plans__list}>
           {plans.map((plan: Plan) => (
             <div key={plan.name} className={styles.plans__card}>
-              <h3 className={styles.plans__card_title}>{plan.name}</h3>
+              <div className={styles.plans__card__header}>
+                <h3 className={styles.plans__card_title}>{plan.name}</h3>
+                <div>{getPlanIcon(plan.name)}</div>
+              </div>
+
               <div className={styles.plans__card_price}>
                 <span className={styles.plans__card_price_label}>
                   COSTO DEL PLAN
