@@ -3,27 +3,77 @@
   grid-column: 1 / 6;
   grid-row: auto;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: #fafbff;
+
+  &__contentTop {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+  }
 
   &__title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: -0.2px;
+  }
+
+  &__subtitle {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: Bold;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.1px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    padding: 16px 24px 40px 24px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    &__top {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
   }
 
   &__toggle {
     display: flex;
-    gap: 1rem;
-    margin-bottom: 2rem;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__toggle_button {
-    padding: 0.75rem 1.5rem;
-    border: 1px solid #ccc;
-    background-color: #fff;
+    border: none;
     cursor: pointer;
+    font-family: "Lato", sans-serif;
+    font-weight: 900;
+    font-style: Black;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    background-color: #ffffff;
+
+    &__text {
+      font-family: "Lato", sans-serif;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 20px;
+      letter-spacing: 0.2px;
+    }
 
     &--active {
-      background-color: #d32f2f;
-      color: #fff;
+      color: #141938;
     }
   }
 
@@ -35,11 +85,20 @@
   }
 
   &__card {
+    display: flex;
+    flex-direction: column;
     border: 1px solid #ddd;
     padding: 1.5rem;
     border-radius: 6px;
     cursor: pointer;
     background-color: #fff;
+    padding-top: 40px;
+    padding-right: 32px;
+    padding-bottom: 48px;
+    padding-left: 32px;
+    gap: 24px;
+
+    border-radius: 24px;
 
     &--selected {
       border-color: #d32f2f;
@@ -58,11 +117,10 @@
     }
 
     &_benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
       padding-left: 1.2rem;
-
-      li {
-        margin-bottom: 0.3rem;
-      }
     }
   }
 }
@@ -72,6 +130,13 @@
     grid-column: 1 / 12;
     grid-row: auto;
     min-height: 87.5vh;
+
+    &__toggle {
+      display: flex;
+      gap: 32px;
+      flex-direction: row;
+      justify-content: center;
+    }
 
     &__list {
       display: flex;
