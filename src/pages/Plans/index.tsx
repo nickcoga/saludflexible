@@ -4,6 +4,7 @@ import { fetchPlans } from "../../services/api";
 import type { Plan } from "../../types/plan";
 import { useUser } from "../../contexts/UserContext";
 import { getAgeFromBirthdate } from "../../utils/getAge";
+import styles from "./Plans.module.scss";
 
 const PlansPage = () => {
   const { user } = useUser();
@@ -11,7 +12,6 @@ const PlansPage = () => {
 
   const [plans, setPlans] = useState<Plan[]>([]);
   const [target, setTarget] = useState<"me" | "someone-else">("me");
-  const [selectedPlan, setSelectedPlan] = useState<Plan | null>(null);
 
   useEffect(() => {
     if (!user) {
@@ -33,21 +33,15 @@ const PlansPage = () => {
     getPlans();
   }, [user, navigate]);
 
-  const handleSelectPlan = (plan: Plan): void => {
-    setSelectedPlan(plan);
-  };
-
   const getPrice = (plan: Plan): number => {
     return target === "someone-else"
       ? Math.round(plan.price * 0.95)
       : plan.price;
   };
 
-  const handleContinue = (): void => {
-    if (!selectedPlan) return;
-
+  const handleSelectPlan = (plan: Plan): void => {
     const planConEstado = {
-      ...selectedPlan,
+      ...plan,
       discounted: target === "someone-else",
     };
 
@@ -56,49 +50,45 @@ const PlansPage = () => {
   };
 
   return (
-    <div className="plans">
-      <h2 className="plans__title">¿Para quién deseas cotizar?</h2>
+    <div className={styles.plans}>
+      <h2 className={styles.plans__title}>
+        {user?.name} ¿Para quién deseas cotizar?
+      </h2>
 
-      <div className="plans__toggle">
+      <div className={styles.plans__toggle}>
         <button
-          className={`plans__toggle-button ${target === "me" ? "plans__toggle-button--active" : ""}`}
+          className={`${styles.plans__toggle_button} ${target === "me" ? styles["plans__toggle_button--active"] : ""}`}
           onClick={() => setTarget("me")}
         >
           Para mí
         </button>
         <button
-          className={`plans__toggle-button ${target === "someone-else" ? "plans__toggle-button--active" : ""}`}
+          className={`${styles.plans__toggle_button} ${target === "someone-else" ? styles["plans__toggle_button--active"] : ""}`}
           onClick={() => setTarget("someone-else")}
         >
           Para alguien más
         </button>
       </div>
 
-      <div className="plans__list">
-        {plans.map((plan: Plan) => (
-          <div
-            key={plan.name}
-            className={`plans__card ${selectedPlan?.name === plan.name ? "plans__card--selected" : ""}`}
-            onClick={() => handleSelectPlan(plan)}
-          >
-            <h3 className="plans__card-title">{plan.name}</h3>
-            <p className="plans__card-price">S/ {getPrice(plan)}</p>
-            <ul className="plans__card-benefits">
-              {plan.description.map((d: string, idx: number) => (
-                <li key={idx}>{d}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      <button
-        className="plans__continue-button"
-        disabled={!selectedPlan}
-        onClick={handleContinue}
-      >
-        Continuar
-      </button>
+      {plans.length > 0 && (
+        <div className={styles.plans__list}>
+          {plans.map((plan: Plan) => (
+            <div
+              key={plan.name}
+              className={styles.plans__card}
+              onClick={() => handleSelectPlan(plan)}
+            >
+              <h3 className={styles.plans__card_title}>{plan.name}</h3>
+              <p className={styles.plans__card_price}>S/ {getPrice(plan)}</p>
+              <ul className={styles.plans__card_benefits}>
+                {plan.description.map((d: string, idx: number) => (
+                  <li key={idx}>{d}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
