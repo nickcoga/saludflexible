@@ -15,6 +15,10 @@
 
 ---
 
+Enlace al deploy en GitHub Pages (https://nickcoga.github.io/saludflexible/).
+
+---
+
 ![alt text](image.png)
 
 ## 📦 Instalación
