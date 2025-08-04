@@ -9,7 +9,7 @@ import maskGroupMobile from "../../assets/maskGroup-mobile.png";
 import maskGroupDesktop from "../../assets/maskGroup-desktop.png";
 import { useMediaQuery } from "@mui/material";
 
-const Home = () => {
+const HomePage = () => {
   const { setUser } = useUser();
   const isMobile = useMediaQuery("(max-width:768px)");
 
@@ -60,4 +60,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;
