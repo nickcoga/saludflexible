@@ -6,7 +6,7 @@
 
 ## 🚀 Tech Stack
 
-- **Framework:** [React 18](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Framework:** [React 19](https://reactjs.org/) + [Vite](https://vitejs.dev/)
 - **Lenguaje:** TypeScript
 - **Estilos:** SCSS Modules
 - **Tests:** Vitest + React Testing Library
