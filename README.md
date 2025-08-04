@@ -49,6 +49,9 @@ Checkbox: validación de renderizado y eventos
 
 InputText: validación de entrada numérica y eventos.
 
+Compatible para todos los navegadores en windows, linux y celulares Android sin embargo debido al consumo de data de terceros por las Api externas
+Apple no permite por permisos de CORS y seguridad el consumo de data en IOs (Iphone, Mac).
+
 Creado por [Nick Correa Garcia].
 
 Licencia
