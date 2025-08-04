@@ -39,7 +39,7 @@ const SummaryPage = () => {
                 <div className={styles.container__content__name}>
                   <IconFamily />
                   <p>
-                    <strong>Nombre:</strong> {user?.name} {user?.lastName}
+                    {user?.name} {user?.lastName}
                   </p>
                 </div>
               </div>
