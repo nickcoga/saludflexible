@@ -33,8 +33,17 @@ const UserForm = ({ onUserLoaded }: Props) => {
     }
 
     try {
-      const user = await fetchUser();
-      onUserLoaded(user);
+      const backendUser = await fetchUser();
+
+      const fullUser: User = {
+        ...backendUser,
+        documentType,
+        documentNumber,
+        phone,
+        acceptMarketing,
+      };
+
+      onUserLoaded(fullUser);
       navigate("/plans");
     } catch (err) {
       setError("Error al cargar los datos del usuario.");
