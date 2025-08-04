@@ -47,9 +47,7 @@ Esto ejecutará los tests utilizando Vitest.
 Cobertura de test implementada:
 Checkbox: validación de renderizado y eventos
 
-InputText: validación de entrada numérica y eventos (puedes ampliar más si agregas tests)
-
-UserForm: validación de envío de formulario vacío
+InputText: validación de entrada numérica y eventos.
 
 Creado por [Nick Correa Garcia].
 
