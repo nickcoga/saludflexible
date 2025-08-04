@@ -19,7 +19,8 @@ Enlace al deploy en GitHub Pages (https://nickcoga.github.io/saludflexible/).
 
 ---
 
-![alt text](image.png)
+![alt text](image-1.png)
+![alt text](image-2.png)
 
 ## 📦 Instalación
 
